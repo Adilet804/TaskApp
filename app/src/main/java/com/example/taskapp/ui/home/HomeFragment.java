@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.taskapp.NoteAdapter;
 import com.example.taskapp.R;
 import com.example.taskapp.databinding.FragmentHomeBinding;
+import com.example.taskapp.model.TaskModel;
 import com.example.taskapp.utils.Constants;
 
 public class HomeFragment extends Fragment {
@@ -33,8 +35,9 @@ public class HomeFragment extends Fragment {
 
     private void getData() {
         getParentFragmentManager().setFragmentResultListener(Constants.REQUEST_KEY, getViewLifecycleOwner(), (requestKey, result) -> {
-            String text = result.getString(Constants.BUNDLE_KEY);
+            TaskModel text = (TaskModel) result.getSerializable(Constants.BUNDLE_KEY);
             Log.e("TAG", "getData: " + text);
+            Toast.makeText(getContext(),text.getTitle(),Toast.LENGTH_LONG).show();
             adapter.addText(text);
         });
     }

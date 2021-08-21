@@ -7,12 +7,19 @@
     tools:context=".ui.home.HomeFragment">
 
     <EditText
-        android:layout_width="match_parent"
+        android:backgroundTint="#292828"
         android:id="@+id/et_poisk_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="22dp"
+        android:layout_marginTop="20dp"
         android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:hint="Поиск заметок"
+        android:padding="10dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content"/>
+        tools:layout_editor_absoluteX="22dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

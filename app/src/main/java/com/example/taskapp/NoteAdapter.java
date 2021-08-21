@@ -8,14 +8,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taskapp.databinding.NoteItemBinding;
+import com.example.taskapp.model.TaskModel;
 
 import java.util.ArrayList;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> {
     NoteItemBinding binding;
-    ArrayList<String> list = new ArrayList<>();
+    ArrayList<TaskModel> list = new ArrayList<>();
 
-    public void addText(String text) {
+    public void addText(TaskModel text) {
         list.add(text);
         notifyDataSetChanged();
     }
@@ -24,8 +25,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = NoteItemBinding.inflate(LayoutInflater.from(parent.getContext()));
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.note_item,parent,false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(binding.getRoot());
     }
 
     @Override
@@ -42,8 +42,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }
-        private void onBind(String s){
-            binding.itemTitle.setText(s);
+        private void onBind(TaskModel model){
+            binding.itemTitle.setText(model.getTitle());
         }
     }
 }

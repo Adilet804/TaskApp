@@ -24,6 +24,6 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.example.taskapp.not.NoteFragment"
+        android:name="com.example.taskapp.ui.not.NoteFragment"
         android:label="NoteFragment" />
 </navigation>

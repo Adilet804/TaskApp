@@ -1,4 +1,4 @@
-package com.example.taskapp.not;
+package com.example.taskapp.ui.not;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 
 import com.example.taskapp.R;
 import com.example.taskapp.databinding.FragmentNoteBinding;
+import com.example.taskapp.model.TaskModel;
 import com.example.taskapp.utils.Constants;
 
 
@@ -29,13 +30,15 @@ public class NoteFragment extends Fragment {
 
     private void initView() {
         binding.btnSave.setOnClickListener(v -> {
-            String title = binding.editText.getText().toString().trim();
+            TaskModel model;
+            String title = binding.editText.getText().toString();
+            model = new TaskModel(title);
             if (TextUtils.isEmpty(title)) {
                 binding.editText.setError("Вы не правильно ввели");
                 return;
             }else {
                 Bundle bundle = new Bundle();
-                bundle.putString(Constants.BUNDLE_KEY, title);
+                bundle.putSerializable(Constants.BUNDLE_KEY, model);
                 getParentFragmentManager().setFragmentResult(Constants.REQUEST_KEY, bundle);
             }
 
